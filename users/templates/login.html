@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 
+{% load socialaccount %}
 
 {% block content %}
 	<h1>Login page</h1>
@@ -10,6 +11,10 @@
 			{{ form.as_p }}
 			<button type="submit">Login</button>
 		</form>
+	</div>
+
+	<div>
+		<a href="{% provider_login_url "vk" %}">Login with VK (django-allauth)</a>
 	</div>
 
 	<div>If you don't have account, please sign in: <a href="{% url 'signin' %}">Signin</a></div>

@@ -16,7 +16,7 @@ def login_view(request):
             password = form.cleaned_data.get('password')
             user = authenticate(username=username, password=password)
             if user:
-                login(request, user)
+                login(request, user, backend='django.contrib.auth.backends.ModelBackend')
                 return redirect('home')
 
     else:
@@ -32,7 +32,7 @@ def signin_view(request):
 
         if form.is_valid():
             user = form.save()
-            login(request, user)
+            login(request, user, backend='django.contrib.auth.backends.ModelBackend')
             return redirect('home')
 
     else:
